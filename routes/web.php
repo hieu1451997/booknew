@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-     return view('dashboard.pages.index');
+Route::get('/', function (\App\Repositories\ProductCategoryRepository $productCategoryRepository) {
+    return $productCategoryRepository->getAll();
+     //return view('dashboard.pages.category.list');
     //return \App\Models\Product::find(1)->publisher;
 });
