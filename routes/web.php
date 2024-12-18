@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function (\App\Repositories\ProductCategoryRepository $productCategoryRepository) {
-    return $productCategoryRepository->getAll();
-     //return view('dashboard.pages.category.list');
-    //return \App\Models\Product::find(1)->publisher;
+// Route::get('/', function (\App\Repositories\ProductCategory\ProductCategoryInterface $productCategoryInterface) {
+//     return $productCategoryInterface->getAll();
+// });
+Route::get('/', function (\App\Services\ProductCategory\ProductCategoryServiceInterface $productCategoryServiceInterface) {
+    return $productCategoryServiceInterface->getAll();
 });
+
