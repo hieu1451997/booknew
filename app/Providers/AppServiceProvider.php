@@ -18,8 +18,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(ProductCategoryInterface::class, ProductCategoryRepository::class);
-        $this->app->bind(ProductCategoryServiceInterface::class, ProductCategoryService::class);
-        
+        $this->app->bind(ProductCategoryServiceInterface::class, ProductCategoryService::class);   
     }
 
     /**

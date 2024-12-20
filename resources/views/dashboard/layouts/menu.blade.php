@@ -58,8 +58,13 @@
                     <div class="collapse" id="cate">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="components/avatars.html">
+                                <a href="{{URL::to('/ProductCategory/list')}}">
                                     <span class="sub-item">List Category</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{URL::to('/ProductCategory/add')}}">
+                                    <span class="sub-item">Add Category</span>
                                 </a>
                             </li>
                         </ul>

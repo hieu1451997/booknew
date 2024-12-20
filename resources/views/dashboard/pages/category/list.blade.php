@@ -27,53 +27,22 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
+                    @if (session('success'))
+                    <div class="alert alert-success " role="alert">
+                        {{ session('success') }}
+                        
+                    </div>
+                    @endif
                     <div class="card-header">
                         <div class="d-flex align-items-center">
                             <h4 class="card-title">List Category</h4>
-                            <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addCategory">
+                            <a href="{{URL::to('/ProductCategory/add')}}" class="btn btn-primary btn-round ml-auto">
                                 <i class="fa fa-plus"></i>
                                 Add Category
-                            </button>
+                            </a>
                         </div>
                     </div>
                     <div class="card-body">
-                        <!-- Add Category -->
-                        <div class="modal fade" id="addCategory" tabindex="-1" role="dialog" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header no-bd">
-                                        <h5 class="modal-title">
-                                            <span class="fw-mediumbold">
-                                            Add</span> 
-                                            <span class="fw-light">
-                                                Category
-                                            </span>
-                                        </h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p class="small">Create a new product category</p>
-                                        <form>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <div class="form-group form-group-default">
-                                                        <label>Name</label>
-                                                        <input id="addName" type="text" class="form-control" placeholder="Category name">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer no-bd">
-                                        <button type="button" id="addRowButton" class="btn btn-primary">Add</button>
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Add Category -->
                         <div class="table-responsive">
                             <table id="add-row" class="display table table-striped table-hover" >
                                 <thead>
@@ -89,19 +58,26 @@
                                     </tr>
                                 </tfoot>
                                 <tbody>
+                                    @foreach ($productCategory as $item)
                                     <tr>
-                                        <td>Tiger Nixon </td>
+                                        <td>{{$item->name}} </td>
                                         <td>
                                             <div class="form-button-action">
-                                                <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                                <a href="{{route('productcategory.edit',$item->id)}}" class="btn btn-link btn-primary btn-lg" title="Edit {{$item->name}}">
                                                     <i class="fa fa-edit"></i>
-                                                </button>
-                                                <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                    <i class="fa fa-times"></i>
-                                                </button>
+                                                </a>
+                                                <form action="{{route('productcategory.destroy',$item->id)}}" method="POST" style="margin: auto">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-link btn-danger" type="submit" data-toggle="tooltip" title=""  data-original-title="Delete {{$item->name}}"
+                                                        onclick="return confirm('Delete {{$item->name}} Product Category')">
+                                                        <i class="fa fa-times"></i>
+                                                    </button>
+                                                </form>      
                                             </div>
                                         </td>
-                                    </tr>
+                                    </tr> 
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
