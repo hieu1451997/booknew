@@ -70,6 +70,27 @@
                         </ul>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a data-toggle="collapse" href="#publisher">
+                        <i class="fas fa-regular fa-print"></i>
+                        <p>Publisher</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="publisher">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{URL::to('/Publisher/list')}}">
+                                    <span class="sub-item">List Publisher</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{URL::to('/Publisher/add')}}">
+                                    <span class="sub-item">Add Publisher</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
