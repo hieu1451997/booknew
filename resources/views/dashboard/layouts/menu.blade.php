@@ -91,6 +91,27 @@
                         </ul>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a data-toggle="collapse" href="#authors">
+                        <i class="fas fa-regular fa-pen-fancy"></i>
+                        <p>Authors</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="authors">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{URL::to('/Authors/list')}}">
+                                    <span class="sub-item">List Authors</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{URL::to('/Authors/add')}}">
+                                    <span class="sub-item">Add Authors</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>

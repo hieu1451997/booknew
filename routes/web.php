@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function (\App\Repositories\Publisher\PublisherInterface $publisherInterface) {
-//     return $publisherInterface->getAll();
+// Route::get('/', function (\App\Repositories\Authors\AuthorsInterface $authorsInterface) {
+//     return $authorsInterface->getAll();
 // });
-// Route::get('/', function (\App\Services\Publisher\PublisherServiceInterface $publisherServiceInterface) {
-//     return $publisherServiceInterface->getAll();
+// Route::get('/', function (\App\Services\Authors\AuthorsServiceInterface $authorsServiceInterface) {
+//     return $authorsServiceInterface->getAll();
 // });
 Route::get('/', function(){
     return view('dashboard.pages.index');
@@ -44,4 +44,14 @@ Route::put('/Publisher/update/{id}', [\App\Http\Controllers\Admin\PublisherContr
 
 Route::delete('/Publisher/delete/{id}', [\App\Http\Controllers\Admin\PublisherController::class, 'destroy'])->name('publisher.destroy');
 
+// Authors
+Route::get('/Authors/list', [\App\Http\Controllers\Admin\AuthorsController::class, 'index'])->name('authors.list');
+
+Route::get('/Authors/add', [\App\Http\Controllers\Admin\AuthorsController::class, 'create'])->name('authors.create');
+Route::post('/Authors/store', [\App\Http\Controllers\Admin\AuthorsController::class, 'store'])->name('authors.store');
+
+Route::get('/Authors/edit/{id}', [\App\Http\Controllers\Admin\AuthorsController::class, 'edit'])->name('authors.edit');
+Route::put('/Authors/update/{id}', [\App\Http\Controllers\Admin\AuthorsController::class, 'update'])->name('authors.update');
+
+Route::delete('/Authors/delete/{id}', [\App\Http\Controllers\Admin\AuthorsController::class, 'destroy'])->name('authors.destroy');
 
